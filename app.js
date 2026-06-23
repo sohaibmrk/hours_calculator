@@ -125,7 +125,16 @@ function calcDiff() {
   renderDiff();
 }
 
+function resetDiff() {
+  document.getElementById('diff-start').value = '';
+  document.getElementById('diff-end').value = '';
+  diffMode = 'time';
+  lastDiffMinutes = null;
+  renderDiff();
+}
+
 document.getElementById('diff-calc-btn').addEventListener('click', calcDiff);
+document.getElementById('diff-reset-btn').addEventListener('click', resetDiff);
 document.getElementById('diff-format-btn').addEventListener('click', () => {
   diffMode = diffMode === 'time' ? 'minutes' : 'time';
   renderDiff();
