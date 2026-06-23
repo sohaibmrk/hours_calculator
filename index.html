@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de horas acumuladas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">Calcula tus horas</div>
+    <h1>Registro de horas</h1>
+  </header>
+
+  <!-- ===================== MODULE 1 ===================== -->
+  <section class="module">
+    <div class="module-head">
+      <span class="module-num">01</span>
+      <h2 class="module-title">Sumadora acumulativa</h2>
+    </div>
+    <p class="module-sub">Añade valores uno a uno: cada entrada se suma al total acumulado.</p>
+
+    <div class="calc-row">
+      <div class="field">
+        <label class="field-label" for="calc-input">Nuevo valor</label>
+        <input type="text" id="calc-input" placeholder="min o hh:mm" autocomplete="off">
+      </div>
+      <button class="primary" id="calc-add-btn">+ Sumar</button>
+    </div>
+
+    <div class="display" id="calc-display-box">
+      <div class="big" id="calc-total-display">0:00</div>
+      <div class="sub" id="calc-total-minutes">= 0 minutos en total</div>
+    </div>
+
+    <div class="entries" id="calc-entries"></div>
+
+    <div class="row-actions">
+      <button class="ghost" id="calc-reset-btn">Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- ===================== MODULE 2 ===================== -->
+  <section class="module">
+    <div class="module-head">
+      <span class="module-num">02</span>
+      <h2 class="module-title">Diferencia entre dos horas</h2>
+    </div>
+    <p class="module-sub">Introduce una hora inicial y una final para obtener la diferencia.</p>
+
+    <div class="diff-inputs">
+      <div class="field">
+        <label class="field-label" for="diff-start">Hora inicial</label>
+        <input type="text" id="diff-start" placeholder="p.ej. 9:00" autocomplete="off">
+      </div>
+      <div class="field">
+        <label class="field-label" for="diff-end">Hora final</label>
+        <input type="text" id="diff-end" placeholder="p.ej. 13:30" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="diff-actions">
+      <button class="primary" id="diff-calc-btn">Calcular diferencia</button>
+      <button class="ghost" id="diff-format-btn">⇄ Cambiar formato</button>
+    </div>
+
+    <div class="display" id="diff-display-box">
+      <div class="big" id="diff-result">—</div>
+      <div class="sub" id="diff-sub">Introduce ambas horas y pulsa Calcular</div>
+    </div>
+    <div class="format-label" id="diff-format-label"></div>
+  </section>
+
+  <!-- ===================== MODULE 3 ===================== -->
+  <section class="module">
+    <div class="module-head">
+      <span class="module-num">03</span>
+      <h2 class="module-title">Sumatorio total</h2>
+    </div>
+
+    <div class="table-scroll">
+      <table class="grid">
+        <thead>
+          <tr>
+            <th></th>
+            <!-- Bloque A: amber -->
+            <th class="blk-a">HOURS AIRCRAFT</th>
+            <th class="blk-a">LANDING</th>
+            <!-- Bloque B: teal -->
+            <th class="blk-b">ENG 1 HOURS</th>
+            <th class="blk-b">ENG 1 CYCLES</th>
+            <!-- Bloque C: violeta -->
+            <th class="blk-c">ENG 2 HOURS</th>
+            <th class="blk-c">ENG 2 CYCLES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">BROUGHT FWD</td>
+            <td class="blk-a"><input type="text" id="r1c1" placeholder="0:00"></td>
+            <td class="blk-a"><input type="text" id="r1c2" placeholder="0"></td>
+            <td class="blk-b"><input type="text" id="r1c3" placeholder="0:00"></td>
+            <td class="blk-b"><input type="text" id="r1c4" placeholder="0"></td>
+            <td class="blk-c"><input type="text" id="r1c5" placeholder="0:00"></td>
+            <td class="blk-c"><input type="text" id="r1c6" placeholder="0"></td>
+          </tr>
+          <tr>
+            <td class="row-label">DAY</td>
+            <td class="blk-a"><input type="text" id="r2c1" placeholder="0:00"></td>
+            <td class="blk-a"><input type="text" id="r2c2" placeholder="0"></td>
+            <td class="blk-b"><input type="text" id="r2c3" placeholder="0:00"></td>
+            <td class="blk-b"><input type="text" id="r2c4" placeholder="0"></td>
+            <td class="blk-c"><input type="text" id="r2c5" placeholder="0:00"></td>
+            <td class="blk-c"><input type="text" id="r2c6" placeholder="0"></td>
+          </tr>
+          <tr>
+            <td class="row-label">TOTAL</td>
+            <td class="blk-a result-cell" id="r3c1">0:00</td>
+            <td class="blk-a result-cell" id="r3c2">0</td>
+            <td class="blk-b result-cell" id="r3c3">0:00</td>
+            <td class="blk-b result-cell" id="r3c4">0</td>
+            <td class="blk-c result-cell" id="r3c5">0:00</td>
+            <td class="blk-c result-cell" id="r3c6">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-actions">
+      <button class="ghost" id="table-clear-btn">Limpiar tabla</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
